@@ -41,11 +41,15 @@ int _printf(const char *format, ...)
 			{
 				char *b = va_arg(args, char *);
 				int c = 0;
-
+				if (b == NULL)
+					b = "(null)";
+				else
+				{
 				while (b[c] != '\0')
 					c++;
 				write(1, b, c);
 				number += c;
+				}
 			}
 			else if (*format == '%')
 			{
