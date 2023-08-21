@@ -34,6 +34,7 @@ int _printf(const char *format, ...)
 			else if (*format == 'c')
 			{
 				char a = va_arg(args, int);
+
 				write(1, &a, 1);
 				number++;
 			}
@@ -41,7 +42,8 @@ int _printf(const char *format, ...)
 			{
 				char *b = va_arg(args, char *);
 				int c = 0;
-				while (*b)
+
+				while (b[c] != '\0')
 					c++;
 				write(1, b, c);
 				number += c;
