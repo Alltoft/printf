@@ -10,11 +10,51 @@
  */
 int _printf(const char *format, ...)
 {
+	int number = 0;
+
 	va_list(args);
 
+	if (format == NULL)
+		return (-1);
+
 	va_start(args, format);
-	write(1, format, strlen(format));
+
+	while (*format)
+	{
+		if (*format != '%')
+		{
+			write(1, format, 1);
+			number++;
+		}
+		else
+		{
+			format++;
+			if (*format == '\0')
+				break;
+			else if (*format == 'c')
+			{
+				char a = va_arg(args, int);
+				write(1, &a, 1);
+				number++;
+			}
+			else if (*format == 's')
+			{
+				char *b = va_arg(args, char *);
+				int c = 0;
+				while (*b)
+					c++;
+				write(1, b, c);
+				number += c;
+			}
+			else if (*format == '%')
+			{
+				write(1, format, 1);
+				number++;
+			}
+		}
+	format++;
+	}
 	va_end(args);
 
-	return (0);
+	return (number);
 }
