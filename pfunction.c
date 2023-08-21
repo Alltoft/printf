@@ -1,7 +1,6 @@
 #include "main.h"
 #include <unistd.h>
 #include <stdarg.h>
-#include <stdio.h>
 #include <string.h>
 /**
  * _printf - a func that prints everything
