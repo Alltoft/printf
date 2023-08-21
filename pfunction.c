@@ -28,6 +28,8 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
+			while (*format == ' ')
+				format++;
 			if (*format == '\0')
 				break;
 			else if (*format == 'c')
@@ -66,6 +68,5 @@ int _printf(const char *format, ...)
 	format++;
 	}
 	va_end(args);
-
 	return (number);
 }
