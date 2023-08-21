@@ -11,12 +11,11 @@
 int _printf(const char *format, ...)
 {
 	int number = 0;
-
 	va_list(args);
+	va_start(args, format);
 
 	if (format == NULL)
 		return (-1);
-	va_start(args, format);
 
 	while (*format)
 	{
@@ -28,8 +27,6 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			while (*format == ' ')
-				format++;
 			if (*format == '\0')
 				break;
 			else if (*format == 'c')
@@ -42,13 +39,11 @@ int _printf(const char *format, ...)
 			else if (*format == 's')
 			{
 				char *b = va_arg(args, char *);
-				int c = 0;
 				if (b == NULL)
 					b = "(null)";
 				else
 				{
-				while (b[c] != '\0')
-					c++;
+				int c = strlen(b);
 				write(1, b, c);
 				number += c;
 				}
