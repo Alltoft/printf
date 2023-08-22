@@ -8,7 +8,7 @@
  */
 int print_i(int n)
 {
-	char str[25];
+	char str[20];
 
 	sprintf(str, "%d", n);
 	write(1, str, strlen(str));
