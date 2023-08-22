@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			number += print_c(*format);
-		}	
+		}
 	format++;
 	}
 	va_end(args);
