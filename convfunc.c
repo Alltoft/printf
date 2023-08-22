@@ -12,11 +12,15 @@
 int con_func(va_list args, char inp)
 {
 	char *str;
+	char a;
+	char b;
+	char c;
 
 	switch (inp)
 	{
 		case 'c':
-			return (print_c(va_arg(args, int)));
+			a = va_arg(args, int);
+			return (print_c(a));
 		case 's':
 			str = va_arg(args, char *);
 			if (str == NULL)
@@ -26,11 +30,12 @@ int con_func(va_list args, char inp)
 			return (write(1, &inp, 1));
 		case 'd':
 		case 'i':
-			return (print_i(va_arg(args, int)));
+			b = va_arg(args, int);
+			return (print_i(b));
 		case 'u':
-			return (print_i(va_arg(args, int)));
+			c = va_arg(args, int);
+			return (print_i(c));
 		default:
 			return (0);
-			
 	}
 }
