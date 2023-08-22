@@ -37,11 +37,6 @@ int _printf(const char *format, ...)
 			op = con_func(args, *format);
 			if (op == 0)
 			{
-				if (*format == ' ')
-				{
-					while(*format == ' ')
-						format++;
-				}
 				format--;
 				write(1, format, 1);
 				number++;
