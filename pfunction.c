@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <string.h>
+#include <stdio.h>
 /**
  * _printf - a func that prints everything
  * @format: what needs to be printed
@@ -39,5 +40,6 @@ int _printf(const char *format, ...)
 	format++;
 	}
 	va_end(args);
+	printf("%d\n", number);
 	return (number);
 }

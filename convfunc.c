@@ -31,7 +31,7 @@ int con_func(va_list args, char inp)
 		case 'd':
 		case 'i':
 			b = va_arg(args, int);
-			return (write(1, &b, 1));
+			return (write(1, &b, 10));
 		case 'u':
 			c = va_arg(args, int);
 			return (write(1, &c, 1));
