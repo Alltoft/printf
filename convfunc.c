@@ -13,8 +13,8 @@ int con_func(va_list args, char inp)
 {
 	char *str;
 	char a;
-	char b;
-	char c;
+	int b;
+	int c;
 
 	switch (inp)
 	{
