@@ -10,12 +10,17 @@
 int _printf(const char *format, ...)
 {
 	int number = 0;
+
 	va_list(args);
+	int op;
+
 	va_start(args, format);
 
 	if (format == NULL)
+	{
+		va_end(args);
 		return (-1);
-
+	}
 	while (*format)
 	{
 		if (*format != '%')
@@ -28,41 +33,8 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '\0')
 				break;
-			else if (*format == 'c')
-			{
-				char a = va_arg(args, int);
-
-				write(1, &a, 1);
-				number++;
-			}
-			else if (*format == 's')
-			{
-				char *b = va_arg(args, char *);
-				if (b == NULL)
-					b = "(null)";
-				else
-				{
-				int c = strlen(b);
-				write(1, b, c);
-				number += c;
-				}
-			}
-			else if (*format == '%')
-			{
-				write(1, format, 1);
-				number++;
-			}
-			else
-			{
-				if (*format == ' ')
-				{
-					while(*format == ' ')
-						format++;
-				}
-				format--;
-				write(1, format, 1);
-				number ++;
-			}
+			op = con_func(args, *format);
+			number += op;
 		}
 	format++;
 	}
