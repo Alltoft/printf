@@ -35,11 +35,21 @@ int _printf(const char *format, ...)
 			if (*format == '\0')
 				break;
 			op = con_func(args, *format);
+			if (op == 0)
+			{
+				if (*format == ' ')
+				{
+					while(*format == ' ')
+						format++;
+				}
+				format--;
+				write(1, format, 1);
+				number++;
+			}
 			number += op;
 		}
 	format++;
 	}
 	va_end(args);
-	printf("%d\n", number);
 	return (number);
 }

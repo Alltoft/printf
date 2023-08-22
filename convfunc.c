@@ -13,8 +13,8 @@ int con_func(va_list args, char inp)
 {
 	char *str;
 	char a;
-	char b;
-	char c;
+	int b;
+	int c;
 
 	switch (inp)
 	{
@@ -31,17 +31,11 @@ int con_func(va_list args, char inp)
 		case 'd':
 		case 'i':
 			b = va_arg(args, int);
-			return (write(1, &b, 10));
+			return (write(1, &b, 1));
 		case 'u':
 			c = va_arg(args, int);
 			return (write(1, &c, 1));
 		default:
-			if (inp == ' ')
-			{
-				while (inp == ' ')
-					inp++;
-			}
-			inp--;
-			return (write(1, &inp, 1));
+			return (0);
 	}
 }
