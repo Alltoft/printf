@@ -54,6 +54,11 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
+				if (*format == ' ')
+				{
+					while(*format == ' ')
+						format++;
+				}
 				format--;
 				write(1, format, 1);
 				number ++;
