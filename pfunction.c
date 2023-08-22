@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 			op = con_func(args, *format);
 			if (op == 0)
 			{
-				format--;
+				print_c('%');
 				write(1, format, 1);
 				number++;
 			}
