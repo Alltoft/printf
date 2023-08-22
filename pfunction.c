@@ -24,25 +24,24 @@ int _printf(const char *format, ...)
 	}
 	while (*format)
 	{
-		if (*format != '%')
+		if (*format == '%')
 		{
-			write(1, format, 1);
-			number++;
+		format++;
+		if (*format == '\0')
+			break;
+		op = con_func(args, *format);
+		if (op == 0)
+		{
+			format--;
+			print_c('%');
+			op = 1;
+		}
+		number += op;
 		}
 		else
 		{
-			format++;
-			if (*format == '\0')
-				break;
-			op = con_func(args, *format);
-			if (op == 0)
-			{
-				print_c('%');
-				write(1, format, 1);
-				number++;
-			}
-			number += op;
-		}
+			number += print_c(*format);
+		}	
 	format++;
 	}
 	va_end(args);
