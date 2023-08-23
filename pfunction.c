@@ -24,11 +24,11 @@ int _printf(const char *format, ...)
 	}
 	while (*format)
 	{
-		if (*format == '%')
-		{
-		format++;
 		if (*format == '\0')
 			break;
+		else if (*format == '%')
+		{
+		format++;
 		op = con_func(args, *format);
 		if (op == 0)
 		{
